@@ -1,0 +1,4 @@
+Body composedOf Organ
+Muscular_Organ is-a Organ
+Heart is-a Muscular_Organ
+Heart partOf Circulatory_System

@@ -1,0 +1,11 @@
+Man is-a Person
+Woman is-a Person
+Child is-a Person
+Father has Child
+Mother has Child
+Mother is-a Wife
+Father is-a Husband
+Husband marriedTo Wife
+Wife marriedTo Husband
+Husband is-a Man
+Wife is-a Woman

@@ -1,0 +1,6 @@
+Tomcat is-a Server
+Apache is-a Server
+Extension partOf Server
+Plugins partOf Server
+Server hasPart Extension
+Server hasPart Plugins

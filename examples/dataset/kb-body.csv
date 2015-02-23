@@ -1,0 +1,7 @@
+Person has Body
+Arm partOf Body
+Hand partOf Arm
+Arm hasPart Hand
+Head partOf Body
+Ear partOf Head
+Eye partOf Head
