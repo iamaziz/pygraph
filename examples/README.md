@@ -15,24 +15,26 @@ In the file
 
 `dataset/kb-body.csv`
 
-
-    from pygraph import dgraph
+```python
+from pygraph import dgraph
+```
 
 Create a graph instance
 
-
-    g = dgraph.PyGraph()
-
+```python
+g = dgraph.PyGraph()
+```
 Read the relation statements from the file
 
+```python
+g.file_relations('dataset/kb-body.csv')
+```
 
-    g.file_relations('dataset/kb-body.csv')
+Here how what it looks like after parsing them:
 
-Here how it looks after we read them:
-
-
-    g.graph_dict
-
+```python
+print(g.graph_dict)
+```
 
     {'Arm': [('Hand', 'partOf')],
      'Body': [('Person', 'has'), ('Arm', 'partOf'), ('Head', 'partOf')],
@@ -46,8 +48,10 @@ Here how it looks after we read them:
 
 Now lets visualize that:
 
+```python
+g.draw_graph("ex3")
+```
 
-    g.draw_graph("ex3")
 
 Here we go:
 
