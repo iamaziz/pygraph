@@ -12,8 +12,8 @@ __version__ = "0.1"
 class PyGraph(object):
     """Create simple and quick Directed Graphs using relational statements (knowledge base)."""
 
-    def __init__(self):
-        self.graph_dict = {}
+    def __init__(self, graph_dict={}):
+        self.graph_dict = graph_dict
 
     def draw_graph(self, output_image="pygraph-test", open_image=True, orientation="BT"):
         """
@@ -38,14 +38,14 @@ class PyGraph(object):
             print("Empyt graph, no realtions found!")
             raise ValueError
 
-        for axiom in self.graph_dict.items():
-            concept, childs = axiom
+        for relation in self.graph_dict.items():
+            concept, childs = relation
             if len(childs) > 0:
                 for c in childs:
-                    child, relation = c
+                    relation, child = c
                     src = pydot.Node(child)
                     dst = pydot.Node(concept)
-                    edge = pydot.Edge(src, dst, label=relation)
+                    edge = pydot.Edge(dst, src, label=relation)
                     graph.add_edge(edge)
 
         # create output dir and save graph
@@ -104,12 +104,12 @@ class PyGraph(object):
             e1, r, e2 = fragments
             self.graph_dict.setdefault(e1, [])
             self.graph_dict.setdefault(e2, [])
-            self.graph_dict[e2].append((e1, r))
+            self.graph_dict[e1].append((r, e2))
 
     def find_relation(self, statement):
         """make sure the relationship is not inserted previously"""
-        relative, r, node = statement.split(" ")
-        if node in self.graph_dict.keys() and (relative, r) in self.graph_dict[node]:
+        node, r, relative = statement.split(" ")
+        if node in self.graph_dict.keys() and (r, relative) in self.graph_dict[node]:
             print("relation exists! {} {} {} ".format(relative, r, node))
             return True
         else:
