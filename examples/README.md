@@ -36,13 +36,13 @@ Here how what it looks like after parsing them:
 print(g.graph_dict)
 ```
 
-    {'Arm': [('Hand', 'partOf')],
-     'Body': [('Person', 'has'), ('Arm', 'partOf'), ('Head', 'partOf')],
-     'Ear': [],
-     'Eye': [],
-     'Hand': [('Arm', 'hasPart')],
-     'Head': [('Ear', 'partOf'), ('Eye', 'partOf')],
-     'Person': []}
+     {'Body': [], 
+      'Head': [('partOf', 'Body')], 
+      'Eye': [('partOf', 'Head')], 
+      'Hand': [('partOf', 'Arm')], 
+      'Person': [('has', 'Body')], 
+      'Ear': [('partOf', 'Head')], 
+      'Arm': [('partOf', 'Body'), ('hasPart', 'Hand')]}
 
 
 
