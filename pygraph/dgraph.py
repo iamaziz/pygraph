@@ -15,7 +15,7 @@ class PyGraph(object):
     def __init__(self, graph_dict={}):
         self.graph_dict = graph_dict
 
-    def draw_graph(self, output_image="pygraph-test", open_image=True, orientation="BT"):
+    def draw_graph(self, output_image="pygraph-test", open_image=True, orientation="BT", label=True):
         """
         input:
             output_image: string name for the output graph
@@ -45,7 +45,10 @@ class PyGraph(object):
                     relation, child = c
                     src = pydot.Node(child)
                     dst = pydot.Node(concept)
+                    if not label:
+                        relation = ''
                     edge = pydot.Edge(dst, src, label=relation)
+
                     graph.add_edge(edge)
 
         # create output dir and save graph
@@ -100,17 +103,17 @@ class PyGraph(object):
         fragments = statement.split(delimiter)
         assert len(fragments) == 3, "wrong structure of the statement: {}".format(statement)
 
-        if not self.find_relation(statement):
+        if not self.find_relation(statement, delimiter):
             e1, r, e2 = fragments
             self.graph_dict.setdefault(e1, [])
             self.graph_dict.setdefault(e2, [])
             self.graph_dict[e1].append((r, e2))
 
-    def find_relation(self, statement):
+    def find_relation(self, statement, delimiter):
         """make sure the relationship is not inserted previously"""
-        node, r, relative = statement.split(" ")
+        node, r, relative = statement.split(delimiter)
         if node in self.graph_dict.keys() and (r, relative) in self.graph_dict[node]:
-            print("relation exists! {} {} {} ".format(relative, r, node))
+            print("relation exists! {} {} {} ".format(node, r, relative))
             return True
         else:
             return False
