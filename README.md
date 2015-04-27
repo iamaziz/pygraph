@@ -87,7 +87,7 @@ For help and options see `$ python pygraph/dgraph.py -h`
 - Repeated relations between the same nodes are ignored.
 - Output will be saved into an output folder `pygraph-output`.
 - You may specify the delimiter in sentences (default is one space " "). 
-- Tested on Python 2.7.8 and 3.4.2
+- Tested on Python 2.7.6 and 3.4.2
 - To install `pydot` for:
 	- python 3+ see [James Mills](https://code.google.com/p/pydot/#Support_for_Python_3) branch.
 	- python 2 try `$ pip install pydot` or `$ sudo pip install pydot`
